@@ -1,0 +1,283 @@
+﻿@page
+@model ClubBAIST.Pages.BookTeeTimeModel
+@{
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        table.imagetable {
+            font-family: verdana,arial,sans-serif;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #999999;
+            border-collapse: collapse;
+        }
+
+            table.imagetable th {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #999999;
+            }
+
+            table.imagetable td {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #999999;
+            }
+    </style>
+    <script type="text/javascript">
+        function IsDateFormValid(aFrom) {
+            var isVaild = false;
+            if (IsDatepickerValid(aFrom) == true) {
+                isVaild = MemberNumberValid(aFrom);
+                return isVaild;
+            }
+            else {
+                return isVaild;
+            }
+        }
+        function IsDatepickerValid(aFrom) {
+            var isVaild = false;
+            var aValue = aFrom.datepicker.value;
+            var length = aValue.length;
+
+            if (length > 0) {
+                isVaild = true;
+            }
+            else {
+                alert('Must pick a date First')
+            }
+            return isVaild;
+        }
+        function MemberNumberValid(aFrom) {
+            var isVaild = false;
+            var aValue = aFrom.MemberNumber.value;
+            var length = aValue.length;
+
+            if (length <= 7) {
+                isVaild = true;
+            }
+            else {
+                alert('MemberNumber can not be more than 7 digits')
+            }
+            return isVaild;
+        }
+
+        function getInputDateFormat(date) {
+            return date.toISOString().split('T')[0];
+        }
+
+        function validDate() {
+            var today = new Date();
+            var maxDate = new Date();
+            maxDate.setDate(maxDate.getDate() + 7);
+
+            document.getElementsByName("datepicker")[0].setAttribute('min', getInputDateFormat(today));
+            document.getElementsByName("datepicker")[0].setAttribute('max', getInputDateFormat(maxDate));
+        }
+
+        function IsTeeTimeFromValid(aFrom) {
+            var isVaild = false;
+            if (IsTeeTimeValid(aFrom) == true) {
+                isVaild = PhoneValid(aFrom);
+                return isVaild;
+            }
+            else {
+                return isVaild;
+            }
+        }
+
+        function IsTeeTimeValid(aFrom) {
+            var isVaild = false;
+            var aValue = aFrom.AList.value;
+            var length = aValue.length;
+
+            if (length > 0) {
+                isVaild = true;
+            }
+            else {
+                alert('Must pick a Tee Time')
+            }
+            return isVaild;
+        }
+        function PhoneValid(aFrom) {
+            var isVaild = false;
+            var aValue = aFrom.Phone.value;
+            var length = aValue.length;
+
+            if (length == 10) {
+                isVaild = true;
+            }
+            else {
+                alert('Phone number requried')
+            }
+            return isVaild;
+        }
+    </script>
+</head>
+<body onload="validDate()">
+    <header><h1>Book Tee Time</h1></header>
+    <nav></nav>
+    <main>
+        <div>
+            <form name="DateForm" method="post" onsubmit="return IsDateFormValid(window.document.DateForm);">
+                <table>
+                    <tr>
+                        <td>Date</td>
+                        <td><input type="date" name="datepicker" value="@Model.datepicker"/></td>
+                    </tr>
+                    <tr>
+                        <td>Member Number:</td>
+                        <td>
+                            <input type="text" name="MemberNumber" value="@Model.MemberNumber" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Submit" asp-page-handler="GetAvilableTeeTime" />
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <h4>@Model.DateFormMessage</h4>
+            </form>
+        </div>
+        <div>
+            <form name="TeeTimeForm" method="post" onsubmit="return IsTeeTimeFromValid(window.document.TeeTimeForm);">
+                <table class="gridtable">
+                    <tr>
+                        <td>
+                            TeeTime
+                        </td>
+
+                        <td>
+                            <select name="AList">
+                                @*<option value="Default">Pick a tee time</option>*@
+                                @foreach (var TeeTime in Model.AvailableTeeTimeList)
+                                {
+                                    <option value="@TeeTime.Teetime">@TeeTime.Teetime</option>
+                                }
+                            </select>@Model.NoTeeTimeMsg
+                        </td>
+                    </tr>
+                    <tr hidden>
+                        <td>
+                            Date
+                        </td>
+                        <td>
+                            <input type="text" name="Date" value="@Model.convertDate" />
+                        </td>
+                    </tr>
+                    <tr hidden>
+                        <td>
+                            Member One Number
+                        </td>
+                        <td>
+                            <input type="text" name="Member1Number" value="@Model.MemberNumber" hidden />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Member Two Number
+                        </td>
+                        <td>
+                            <input type="text" name="Member2Number" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Member Three Number
+                        </td>
+                        <td>
+                            <input type="text" name="Member3Number" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Member Four Number
+                        </td>
+                        <td>
+                            <input type="text" name="Member4Number" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Phone
+                        </td>
+                        <td>
+                            <input type="text" name="Phone" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            # Of Carts
+                        </td>
+                        <td>
+                            <select name="NumOfCarts" Name="NumOfCarts">
+                                {
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Time(hours)
+                        </td>
+                        <td>
+                            <input type="text" name="Time" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Submit" id="TeeTimeButton" asp-page-handler="AddTeeTime" />
+                        </td>
+                    </tr>
+                </table>
+                <h4>@Model.Message</h4>
+
+            </form>
+        </div>
+        <div>
+                <h1>Daily Tee Sheet for @Model.convertDate</h1>
+                <table class="imagetable">
+                    <tr>
+                        <td>Time</td>
+                        <td>Mamber Name</td>
+                        <td># Of Players</td>
+                        <td>Phone</td>
+                        <td># of Carts</td>
+                        <td>Date</td>
+                        <td>Time</td>
+                    </tr>
+                    @foreach (var TeeTime in Model.DailyTeeSheet)
+                    {
+                        <tr>
+                            <td>
+                                @TeeTime.Teetime
+                            </td>
+                            <td>@TeeTime.MemberName</td>
+                            <td>@TeeTime.NumberOfPlayer</td>
+                            <td>@TeeTime.Phone</td>
+                            <td>@TeeTime.NumberOfCarts</td>
+                            <td>@TeeTime.Date</td>
+                            <td>@TeeTime.Time</td>
+                         </tr>
+                    }
+                </table>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>

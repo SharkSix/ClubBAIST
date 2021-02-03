@@ -1,0 +1,128 @@
+﻿@page
+@model ClubBAIST.Pages.ReviewMonthlyHandicapReportModel
+@{
+    ViewData["Title"] = "ReviewMonthlyHandicapReport";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        table.imagetable {
+            width: 100%;
+            font-family: verdana,arial,sans-serif;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #999999;
+            border-collapse: collapse;
+        }
+
+            table.imagetable th {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #999999;
+            }
+
+            table.imagetable td {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #999999;
+            }
+    </style>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body onload="validDate()">
+    <header><h1>Review Membership Application</h1></header>
+    <nav></nav>
+    <main>
+        <div>
+            <form name="ReportForm" method="post">
+                <table>
+                    <tr>
+                        <td>Date</td>
+                        <td><input type="month" name="Time" /></td>
+                    </tr>
+                </table>
+                @*<h4>@Model.Message</h4>*@
+                <table>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Submit" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+                <table class="imagetable">
+                    <thead>
+                        <tr>
+                            <th>
+                                Member Name
+                            </th>
+                            <th>
+                                Handicap
+                            </th>
+                            <th>
+                                Average
+                            </th>
+                            <th>
+                                Best 10 Average
+                            </th>
+                            <th>
+                                Last 20 Rounds
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.MonthlyHandicapReport != null)
+                        {
+                            @foreach (var item in Model.MonthlyHandicapReport)
+                            {
+                                if (item.Last20Rounds != null)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MemberName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Handicap)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Average)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Best10Average)
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                @foreach (var number in item.Last20Rounds)
+                                                {
+                                                    <td style="column-width:50px;">
+                                                        @number
+                                                    </td>
+                                                }
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                }
+                            }
+                        }
+                </tbody>
+                </table>
+            <div>
+                <h4>@Model.Message</h4>
+            </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>

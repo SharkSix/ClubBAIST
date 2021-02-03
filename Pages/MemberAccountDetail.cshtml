@@ -1,0 +1,56 @@
+﻿@page
+@model ClubBAIST.Pages.MemberAccountDetailModel
+@{
+    ViewData["Title"] = "MemberAccountDetail";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body onload="validDate()">
+    <header><h1>Member Account Detail</h1></header>
+    <nav></nav>
+    <main>
+        <div>
+            <form name="RecordMemberForm" method="post">
+                <table>
+                    <tr>
+                        <td>Member Number</td>
+                        <td><input type="text" name="MemberNumber" value="@Model.member.MemberNumber" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>FirstName</td>
+                        <td><input type="text" name="FirstName" value="@Model.member.FirstName" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>LastName</td>
+                        <td><input type="text" name="LastName" value="@Model.member.LastName" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>Membership</td>
+                        <td><input type="text" name="MemberShipCode" value="@Model.member.MemberShipCode" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a asp-page="./ReviewMemberAccount">Back</a>
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <h4></h4>
+            </form>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>
+

@@ -1,0 +1,62 @@
+﻿@page
+@model ClubBAIST.Pages.RecordMemberModel
+@{
+    ViewData["Title"] = "RecordMember";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+        
+    </script>
+</head>
+<body onload="validDate()">
+    <header><h1>Record Member</h1></header>
+    <nav></nav>
+    <main>
+        <div>
+            <form name="RecordMemberForm" method="post">
+                <table>
+                    <tr>
+                        <td>Member Number</td>
+                        <td><input type="text" name="MemberNumber" /></td>
+                        <td><span asp-validation-for="MemberNumber"></span></td>
+                    </tr>
+                    <tr>
+                        <td>FirstName</td>
+                        <td><input type="text" name="FirstName" /></td>
+                        <td><span asp-validation-for="FirstName"></span></td>
+                    </tr>
+                    <tr>
+                        <td>LastName</td>
+                        <td><input type="text" name="LastName" /></td>
+                        <td><span asp-validation-for="LastName"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Membership</td>
+                        <td><input type="text" name="MemberShipCode" /></td>
+                        <td><span asp-validation-for="MemberShipCode"></span></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="submit" value="Submit" />
+                        </td>
+                    </tr>
+                </table>
+                <h4>@Model.Message</h4>
+                <hr>
+                <h4></h4>
+            </form>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>
+

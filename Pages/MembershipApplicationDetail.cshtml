@@ -1,0 +1,105 @@
+﻿@page
+@model ClubBAIST.Pages.MembershipApplicationDetailModel
+@{
+    ViewData["Title"] = "MembershipApplicationDetail";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body onload="validDate()">
+    <header><h1>Membership Application</h1></header>
+    <nav></nav>
+    <main>
+        <div>
+            <form name="MembershipAppForm" method="post">
+                <table>
+                    <tr>
+                        <td>Last Name</td>
+                        <td style="padding-right: 50px;"><input type="text" name="LastName" value="@Model.Application.LastName" readonly/></td>
+                        <td>Occupation</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Occupation" value="@Model.Application.Occupation" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td>
+                        <td style="padding-right: 50px;"><input type="text" name="FirstName" value="@Model.Application.FirstName" readonly/></td>
+                        <td>Company Name</td>
+                        <td style="padding-right: 50px;"><input type="text" name="CompanyName" value="@Model.Application.CompanyName" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Address" value="@Model.Application.Address" readonly /></td>
+                        <td>Postal Code</td>
+                        <td style="padding-right: 50px;"><input type="text" name="PostCode" value="@Model.Application.PostalCode" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Phone" value="@Model.Application.Phone" readonly /></td>
+                        <td>Alternate Phone</td>
+                        <td style="padding-right: 50px;"><input type="text" name="AlternatePhone" value="@Model.Application.AlternatePhone" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Email" value="@Model.Application.Email" readonly /></td>
+                        <td>Date Of Birth(MM/DD/YYYY)</td>
+                        <td style="padding-right: 50px;"><input type="text" name="DateOfBirth" value="@Model.Application.DateOfBirth" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Company Adress</td>
+                        <td style="padding-right: 50px;"><input type="text" name="CompanyAddress" value="@Model.Application.CompanyAddress" readonly /></td>
+                        <td>Company Postal Code</td>
+                        <td style="padding-right: 50px;"><input type="text" name="CompanyPostCode" value="@Model.Application.CompanyPostalCode" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Company Phone</td>
+                        <td style="padding-right: 50px;"><input type="text" name="CompanyPhone" value="@Model.Application.CompanyPhone" readonly/></td>
+                    </tr>
+                </table>
+                <hr style="height:1px;border:none;border-top:1px solid #555555; margin:20px;" />
+                <table>
+                    <tr>
+                        <td>Shareholder Number</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Shareholder1Number" value="@Model.Application.ShareholderOneNumber" readonly/></td>
+                        <td>Signed Date</td>
+                        <td><input type="text" name="Shareholder1SignDate" value="@Model.Application.ShareholderOneSignDate" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>Shareholder Number</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Shareholder2Number" value="@Model.Application.ShareholderTwoNumber" readonly/></td>
+                        <td>Signed Date</td>
+                        <td><input type="text" name="Shareholder2SignDate"  value="@Model.Application.ShareholderTwoSignDate" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>Application Status</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Status" value="@Model.Application.Status" readonly /></td>
+                        <td>Date</td>
+                        <td>
+                            <input type="text" name="Date" value="@Model.Application.Date" readonly />
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>
+                            <a asp-page="./ReviewMembershipApplication">Back</a>
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <h4></h4>
+            </form>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>

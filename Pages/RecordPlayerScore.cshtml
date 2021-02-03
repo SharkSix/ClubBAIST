@@ -1,0 +1,68 @@
+﻿@page
+@model ClubBAIST.Pages.RecordPlayerScoreModel
+@{
+    ViewData["Title"] = "RecordPlayerScore";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        table.imagetable {
+            font-family: verdana,arial,sans-serif;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #999999;
+            border-collapse: collapse;
+            width:100%;
+        }
+
+            table.imagetable th {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #999999;
+            }
+
+            table.imagetable td {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #999999;
+            }
+    </style>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body onload="validDate()">
+    <header><h1>Record Player Score</h1></header>
+    <nav></nav>
+    <main>
+        <div>
+            <form name="RecordMemberForm" method="post">
+                <table>
+                    <tr>
+                        <td>
+                            <a asp-page="./RecordPlayerScoreMan">Man players</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a asp-page="./RecordPlayerScoreWomen">Women players</a>
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <h4></h4>
+            </form>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>

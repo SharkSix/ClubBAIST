@@ -1,0 +1,139 @@
+﻿@page
+@model ClubBAIST.Pages.RecordPlayerScoreWomenModel
+@{
+    ViewData["Title"] = "RecordPlayerScoreWomen";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        table.imagetable {
+            font-family: verdana,arial,sans-serif;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #999999;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            table.imagetable th {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #999999;
+            }
+
+            table.imagetable td {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #999999;
+            }
+    </style>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body onload="validDate()">
+    <header><h1>Record Player Score For Women</h1></header>
+    <nav></nav>
+    <main>
+        <div>
+            <form name="RecordMemberForm" method="post">
+                <table>
+                    <tr>
+                        <td>Date: <input type="date" name="Date" /></td>
+                        <td>TeeTime: <input type="text" name="TeeTime" /></td>
+                        <td>Crouse: <input type="text" name="Course" /></td>
+                        <td>Course Rating: <input type="text" name="CourseRating" /></td>
+                        <td>Course Slope: <input type="text" name="CourseSlope" /></td>
+                    </tr>
+                </table>
+                <table class="imagetable">
+                    <tr style="background-color:bisque">
+                        @foreach (var item in Model.TableHeading)
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item)
+                            </td>
+                        }
+                    </tr>
+                    <tr style="background-color:lightgray">
+                        @foreach (var item in Model.Par)
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item)
+                            </td>
+                        }
+                    </tr>
+                    <tr style="background-color:red">
+                        @foreach (var item in Model.Red)
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item)
+                            </td>
+                        }
+                    </tr>
+                    <tr style="background-color:white">
+                        @foreach (var item in Model.White)
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item)
+                            </td>
+                        }
+                    </tr>
+
+                    <tr style="background-color:white">
+                        @foreach (var item in Model.Handicap)
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item)
+                            </td>
+                        }
+                    </tr>
+                    <tr style="background-color:white">
+                        <td>Player Number: <input type="text" name="MemberNumber" size="10" /></td>
+                        <td><input type="text" name="Hole1" size="1" /></td>
+                        <td><input type="text" name="Hole2" size="1" /></td>
+                        <td><input type="text" name="Hole3" size="1" /></td>
+                        <td><input type="text" name="Hole4" size="1" /></td>
+                        <td><input type="text" name="Hole5" size="1" /></td>
+                        <td><input type="text" name="Hole6" size="1" /></td>
+                        <td><input type="text" name="Hole7" size="1" /></td>
+                        <td><input type="text" name="Hole8" size="1" /></td>
+                        <td><input type="text" name="Hole9" size="1" /></td>
+                        <td><input type="text" name="Out" size="2" /></td>
+                        <td><input type="text" name="Hole10" size="1" /></td>
+                        <td><input type="text" name="Hole11" size="1" /></td>
+                        <td><input type="text" name="Hole12" size="1" /></td>
+                        <td><input type="text" name="Hole13" size="1" /></td>
+                        <td><input type="text" name="Hole14" size="1" /></td>
+                        <td><input type="text" name="Hole15" size="1" /></td>
+                        <td><input type="text" name="Hole16" size="1" /></td>
+                        <td><input type="text" name="Hole17" size="1" /></td>
+                        <td><input type="text" name="Hole18" size="1" /></td>
+                        <td><input type="text" name="Out" size="2" /></td>
+                        <td><input type="text" name="Total" size="2" /></td>
+                    </tr>
+                </table>
+                <h4>@Model.Message</h4>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Submit" />
+                        </td>
+                    </tr>
+                </table>
+                <a asp-page="./RecordPlayerScore">Back</a>
+            </form>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>
+

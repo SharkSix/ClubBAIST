@@ -1,0 +1,88 @@
+﻿@page
+@model ClubBAIST.Pages.ReviewMemberAccountModel
+@{
+    ViewData["Title"] = "ReviewMemberAccount";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        table.imagetable {
+            width: 100%;
+            font-family: verdana,arial,sans-serif;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #999999;
+            border-collapse: collapse;
+        }
+
+            table.imagetable th {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #999999;
+            }
+
+            table.imagetable td {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #999999;
+            }
+    </style>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body onload="validDate()">
+    <header><h1>Review Membership Application</h1></header>
+    <nav></nav>
+    <main>
+        <div>
+            <table class="imagetable">
+                <thead>
+                    <tr>
+                        <th>
+                            FirstName
+                        </th>
+                        <th>
+                            LastName
+                        </th>
+                        <th>
+                            Member Number
+                        </th>
+                        <th>
+                            View
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var member in Model.MemberList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => member.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => member.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => member.MemberNumber)
+                            </td>
+                            <td>
+                                <a asp-page="./MemberAccountDetail" asp-route-id="@member.MemberNumber">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>

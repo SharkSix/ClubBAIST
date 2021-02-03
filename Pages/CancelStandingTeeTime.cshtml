@@ -1,0 +1,64 @@
+﻿@page
+@model ClubBAIST.Pages.CancelStandingTeeTimeModel
+@{
+    ViewData["Title"] = "CancelStandingTeeTime";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+        function getInputDateFormat(date) {
+            return date.toISOString().split('T')[0];
+        }
+
+        function validDate() {
+            var today = new Date();
+            var maxDate = new Date();
+            maxDate.setDate(maxDate.getDate() + 7);
+
+            document.getElementsByName("StartDate")[0].setAttribute('min', getInputDateFormat(today));
+            document.getElementsByName("StartDate")[0].setAttribute('max', getInputDateFormat(maxDate));
+            document.getElementsByName("EndDate")[0].setAttribute('min', getInputDateFormat(today));
+            document.getElementsByName("EndDate")[0].setAttribute('max', getInputDateFormat(maxDate));
+        }
+    </script>
+</head>
+<body onload="validDate()">
+    <header><h1>Book Tee Time</h1></header>
+    <nav></nav>
+    <main>
+        <div>
+            <form name="StandingTeeTimeForm" method="post" onsubmit="return IsDateFormValid(window.document.StandingTeeTimeForm);">
+                <table>
+                    <tr>
+                        <td>Shareholder Number</td>
+                        <td><input type="text" name="ShareholderNumber" /></td>
+                        <td><span asp-validation-for="ShareholderNumber"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Request Start Date</td>
+                        <td><input type="date" name="StartDate" /></td>
+                        <td><span asp-validation-for="StartDate"></span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Submit" />
+                        </td>
+                    </tr>
+                </table>
+                <h4>@Model.Message</h4>
+                <hr>
+                <h4></h4>
+            </form>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>
+

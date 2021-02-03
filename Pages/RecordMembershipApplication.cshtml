@@ -1,0 +1,127 @@
+﻿@page
+@model ClubBAIST.Pages.RecordMembershipApplicationModel
+@{
+    ViewData["Title"] = "RecordMembershipApplication";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+       
+    </script>
+</head>
+<body onload="validDate()">
+    <header><h1>Membership Application</h1></header>
+    <nav></nav>
+    <main>
+        <div>
+            <form name="MembershipAppForm" method="post">
+                <table>
+                    <tr>
+                        <td>Last Name</td>
+                        <td style="padding-right: 50px;"><input type="text" name="LastName" /></td>
+                        <td><span asp-validation-for="LastName"></span></td>
+                        <td>Occupation</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Occupation" /></td>
+                        <td><span asp-validation-for="Occupation"></span></td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td>
+                        <td style="padding-right: 50px;"><input type="text" name="FirstName" /></td>
+                        <td><span asp-validation-for="FirstName"></span></td>
+                        <td>Company Name</td>
+                        <td style="padding-right: 50px;"><input type="text" name="CompanyName" /></td>
+                        <td><span asp-validation-for="CompanyName"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Address" /></td>
+                        <td><span asp-validation-for="Address"></span></td>
+                        <td>Postal Code</td>
+                        <td style="padding-right: 50px;"><input type="text" name="PostCode" /></td>
+                        <td><span asp-validation-for="PostCode"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Phone" /></td>
+                        <td><span asp-validation-for="Phone"></span></td>
+                        <td>Alternate Phone</td>
+                        <td style="padding-right: 50px;"><input type="text" name="AlternatePhone" /></td>
+                        <td><span asp-validation-for="AlternatePhone"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Email" /></td>
+                        <td><span asp-validation-for="Email"></span></td>
+                        <td>Date Of Birth(MM/DD/YYYY)</td>
+                        <td style="padding-right: 50px;"><input type="text" name="DateOfBirth" /></td>
+                        <td><span asp-validation-for="DateOfBirth"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Company Adress</td>
+                        <td style="padding-right: 50px;"><input type="text" name="CompanyAddress" /></td>
+                        <td><span asp-validation-for="CompanyAddress"></span></td>
+                        <td>Company Postal Code</td>
+                        <td style="padding-right: 50px;"><input type="text" name="CompanyPostCode" /></td>
+                        <td><span asp-validation-for="CompanyPostCode"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Company Phone</td>
+                        <td style="padding-right: 50px;"><input type="text" name="CompanyPhone" /></td>
+                        <td><span asp-validation-for="CompanyPhone"></span></td>
+                    </tr>
+                </table>
+                <hr style="height:1px;border:none;border-top:1px solid #555555; margin:20px;" />
+                <table>
+                    <tr>
+                        <td>Shareholder Number</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Shareholder1Number" /></td>
+                        <td><span asp-validation-for="Shareholder1Number"></span></td>
+                        <td>Signed Date</td>
+                        <td><input type="date" name="Shareholder1SignDate" /></td>
+                        <td><span asp-validation-for="Shareholder1SignDate"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Shareholder Number</td>
+                        <td style="padding-right: 50px;"><input type="text" name="Shareholder2Number" /></td>
+                        <td><span asp-validation-for="Shareholder2Number"></span></td>
+                        <td>Signed Date</td>
+                        <td><input type="date" name="Shareholder2SignDate" /></td>
+                        <td><span asp-validation-for="Shareholder2SignDate"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Application Status</td>
+                        <td>
+                            <select name="Status">
+                                <option value="Accepted">Accepted</option>
+                                <option value="Denied">Denied</option>
+                                <option value="On-Hold">On-Hold</option>
+                                <option value="Waitlisted">Waitlisted</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Submit" />
+                        </td>
+                    </tr>
+                </table>
+
+                <h4>@Model.Message</h4>
+                <hr>
+                <h4></h4>
+            </form>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>
+
